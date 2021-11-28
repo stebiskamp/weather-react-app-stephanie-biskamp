@@ -22,7 +22,7 @@ function App() {
       </div>
       <footer>
         <a
-          href="https://github.com/stebiskamp/Weather-Project-Stebiskamp"
+          href="https://github.com/stebiskamp/weather-react-app-stephanie-biskamp"
           target="_blank"
           rel="noreferrer"
         >
