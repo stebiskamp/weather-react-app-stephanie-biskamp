@@ -1,8 +1,26 @@
-import React from "react";
-import "bootstrap/dist/css/bootstrap.css";
+import React, { useState } from "react";
+import Weather from "./Weather";
+import axios from "axios";
 
 export default function SearchEngine() {
-  return (
+  const [weather, setWeather] = useState({ ready: false });
+
+  function handleResponse(response) {
+    setWeather({
+      ready: true,
+      name: response.data.name,
+      temperature: Math.round(response.data.main.temp),
+      tempmax: Math.round(response.data.main.temp_max),
+      tempmin: Math.round(response.data.main.temp_min),
+      humidity: response.data.main.humidity,
+      description: response.data.weather[0].main,
+      icon: response.data.weather[0].icon,
+      wind: Math.round(response.data.wind.speed),
+    });
+    console.log(response);
+  }
+
+  let form = (
     <form className="SearchEngine">
       <div className="row">
         <div className="col-6">
@@ -28,4 +46,20 @@ export default function SearchEngine() {
       </div>
     </form>
   );
+
+  if (weather.ready) {
+    return (
+      <>
+        {" "}
+        {form}
+        <Weather weather={weather} />{" "}
+      </>
+    );
+  } else {
+    const apiKey = "53f3bc1f5d348c44be3e3754c7185573";
+    const city = "Paris";
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+    return "Loading...";
+  }
 }

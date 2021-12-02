@@ -1,5 +1,4 @@
 import SearchEngine from "./SearchEngine";
-import Weather from "./Weather";
 import Forecast from "./Forecast";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
@@ -10,7 +9,6 @@ function App() {
       <div className="container">
         <div className="App">
           <SearchEngine />
-          <Weather />
           <div className="row">
             <Forecast day="Sun" tempMax={7} tempMin={3} />
             <Forecast day="Mon" tempMax={9} tempMin={0} />

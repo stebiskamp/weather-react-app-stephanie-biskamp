@@ -1,39 +1,37 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.css";
 
-export default function Weather() {
+export default function Weather(props) {
   return (
     <div className="Weather">
       <div className="row">
         <div className="col-6">
-          <h1 className="header">Berlin</h1>
+          <h1 className="header">{props.weather.name}</h1>
         </div>
         <div className="col-6">
           <div className="row">
             <div className="col-12">
-              <h3 className="current-day">
-                <span> Sat, 27 Nov 2021 / </span>15:00h
-              </h3>
+              <h3 className="current-day">Sat, 27 Nov 2021 / 15:00h</h3>
             </div>
           </div>
           <div className="row">
             <div className="col-12">
               <h3>
-                Currently <span>3</span> °C /
-                <span className="description"> Clouds </span>
+                Currently {props.weather.temperature} °C / {props.weather.icon}
                 <i className="fas fa-cloud"></i>
               </h3>
             </div>
           </div>
           <div className="col-12">
             <h3>
-              <span>7</span> °C <i className="fas fa-temperature-high"></i> /{" "}
-              <span>1</span> °C <i className="fas fa-temperature-low"></i>
+              {props.weather.tempmax}°C{" "}
+              <i className="fas fa-temperature-high"></i> /{" "}
+              {props.weather.tempmin}
+              °C <i className="fas fa-temperature-low"></i>
             </h3>
           </div>
           <div className="col-12">
             <h3>
-              Humidity: <span>50</span>% / Wind: <span>8</span>
+              Humidity: {props.weather.humidity}% / Wind: {props.weather.wind}
               km/h
             </h3>
           </div>
