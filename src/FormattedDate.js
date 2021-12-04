@@ -33,7 +33,7 @@ export default function FormattedDate(props) {
   return (
     <div>
       {currentDay}, {currentDate} {currentMonth} {currentYear} / {currentHour}:
-      {currentMinute}{" "}
+      {currentMinute}h{" "}
     </div>
   );
 }

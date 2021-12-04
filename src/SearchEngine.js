@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Weather from "./Weather";
 import axios from "axios";
 
-export default function SearchEngine() {
+export default function SearchEngine(props) {
   const [weather, setWeather] = useState({ ready: false });
+  const [city, setCity] = useState(props.defaultCity);
 
   function handleResponse(response) {
     setWeather({
@@ -20,8 +21,23 @@ export default function SearchEngine() {
     });
   }
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+
+  function search() {
+    const apiKey = "53f3bc1f5d348c44be3e3754c7185573";
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function handleCityChange(event) {
+    setCity(event.target.value);
+  }
+
   let form = (
-    <form className="SearchEngine">
+    <form className="SearchEngine" onSubmit={handleSubmit}>
       <div className="row">
         <div className="col-6">
           <div className="mb-3">
@@ -30,6 +46,7 @@ export default function SearchEngine() {
               className="form-control"
               placeholder="Enter a city name"
               autoFocus
+              onChange={handleCityChange}
             />
           </div>
         </div>
@@ -49,17 +66,13 @@ export default function SearchEngine() {
 
   if (weather.ready) {
     return (
-      <>
-        {" "}
+      <div>
         {form}
-        <Weather weather={weather} />{" "}
-      </>
+        <Weather weather={weather} />
+      </div>
     );
   } else {
-    const apiKey = "53f3bc1f5d348c44be3e3754c7185573";
-    const city = "Berlin";
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
+    search();
     return "Loading...";
   }
 }

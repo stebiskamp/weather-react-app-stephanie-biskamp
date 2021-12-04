@@ -8,7 +8,7 @@ function App() {
     <div className="weather-app-wrapper">
       <div className="container">
         <div className="App">
-          <SearchEngine />
+          <SearchEngine defaultCity="Berlin" />
           <div className="row">
             <Forecast day="Sun" tempMax={7} tempMin={3} />
             <Forecast day="Mon" tempMax={9} tempMin={0} />
