@@ -9,6 +9,7 @@ export default function SearchEngine() {
     setWeather({
       ready: true,
       name: response.data.name,
+      date: response.data.timezone,
       temperature: Math.round(response.data.main.temp),
       tempmax: Math.round(response.data.main.temp_max),
       tempmin: Math.round(response.data.main.temp_min),
@@ -17,7 +18,6 @@ export default function SearchEngine() {
       icon: response.data.weather[0].icon,
       wind: Math.round(response.data.wind.speed),
     });
-    console.log(response);
   }
 
   let form = (
@@ -57,7 +57,7 @@ export default function SearchEngine() {
     );
   } else {
     const apiKey = "53f3bc1f5d348c44be3e3754c7185573";
-    const city = "Paris";
+    const city = "Berlin";
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
     return "Loading...";

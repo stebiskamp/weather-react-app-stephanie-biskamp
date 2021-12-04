@@ -1,6 +1,13 @@
 import React from "react";
+import FormattedDate from "./FormattedDate";
 
 export default function Weather(props) {
+  let d = new Date();
+  let localTime = d.getTime();
+  let localOffset = d.getTimezoneOffset() * 60000;
+  let utc = localTime + localOffset;
+  let nDate = new Date(utc + 1000 * props.weather.date);
+
   return (
     <div className="Weather">
       <div className="row">
@@ -10,7 +17,9 @@ export default function Weather(props) {
         <div className="col-6">
           <div className="row">
             <div className="col-12">
-              <h3 className="current-day">Sat, 27 Nov 2021 / 15:00h</h3>
+              <h3 className="current-day">
+                <FormattedDate date={nDate} />
+              </h3>
             </div>
           </div>
           <div className="row">
