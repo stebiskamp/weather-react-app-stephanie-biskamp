@@ -34,8 +34,8 @@ export default function Weather(props) {
           </div>
           <div className="col-12">
             <h3>
-              {props.weather.tempmax}°C{" "}
-              <i className="fas fa-temperature-high"></i> /{" "}
+              Max {props.weather.tempmax}°C{" "}
+              <i className="fas fa-temperature-high"></i> / Min{" "}
               {props.weather.tempmin}
               °C <i className="fas fa-temperature-low"></i>
             </h3>
