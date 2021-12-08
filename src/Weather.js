@@ -2,6 +2,7 @@ import React from "react";
 import FormattedDate from "./FormattedDate";
 import Icons from "./Icons";
 import Temperature from "./Temperature";
+import Forecast from "./Forecast";
 
 export default function Weather(props) {
   let d = new Date();
@@ -16,7 +17,7 @@ export default function Weather(props) {
         <div className="col-6">
           <h1 className="header">{props.weather.name}</h1>
         </div>
-        <div className="col-6">
+        <div className="col-6 WeatherInfo">
           <div className="row">
             <div className="col-12">
               <h3 className="current-day">
@@ -47,6 +48,13 @@ export default function Weather(props) {
             </h3>
           </div>
         </div>
+      </div>
+      <div className="row">
+        <Forecast day="Sun" tempMax={7} tempMin={3} />
+        <Forecast day="Mon" tempMax={9} tempMin={0} />
+        <Forecast day="Tue" tempMax={11} tempMin={4} />
+        <Forecast day="Wed" tempMax={7} tempMin={1} />
+        <Forecast day="Thu" tempMax={8} tempMin={4} />
       </div>
     </div>
   );
