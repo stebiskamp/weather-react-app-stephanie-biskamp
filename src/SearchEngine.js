@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Weather from "./Weather";
+import Forecast from "./Forecast";
 import axios from "axios";
 
 export default function SearchEngine(props) {
@@ -7,6 +8,7 @@ export default function SearchEngine(props) {
   const [city, setCity] = useState(props.defaultCity);
 
   function handleResponse(response) {
+    console.log(response);
     setWeather({
       ready: true,
       name: response.data.name,
@@ -18,6 +20,7 @@ export default function SearchEngine(props) {
       description: response.data.weather[0].main,
       icon: response.data.weather[0].icon,
       wind: Math.round(response.data.wind.speed),
+      coordinates: response.data.coord,
     });
   }
 
@@ -69,6 +72,14 @@ export default function SearchEngine(props) {
       <div>
         {form}
         <Weather weather={weather} />
+        <div className="row">
+          <Forecast
+            day="Sun"
+            tempMax={7}
+            tempMin={3}
+            coordinates={weather.coordinates}
+          />
+        </div>
       </div>
     );
   } else {
