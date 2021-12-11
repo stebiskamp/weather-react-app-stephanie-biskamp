@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ForecastDay from "./ForecastDay";
 
 export default function Forecast(props) {
   const [loaded, setLoaded] = useState(false);
   const [forecast, setForecast] = useState(null);
+
+  useEffect(() => {
+    setLoaded(false);
+  }, [props.coordinates]);
 
   function handleResponse(response) {
     setForecast(response.data.daily);
@@ -14,11 +18,15 @@ export default function Forecast(props) {
   if (loaded) {
     return (
       <div className="row">
-        <ForecastDay data={forecast[1]} />
-        <ForecastDay data={forecast[2]} />
-        <ForecastDay data={forecast[3]} />
-        <ForecastDay data={forecast[4]} />
-        <ForecastDay data={forecast[5]} />
+        {forecast.map(function (dailyForecast, index) {
+          if (index > 0 && index < 6) {
+            return (
+              <div className="col Forecast" key={index}>
+                <ForecastDay data={dailyForecast} />
+              </div>
+            );
+          }
+        })}
       </div>
     );
   } else {

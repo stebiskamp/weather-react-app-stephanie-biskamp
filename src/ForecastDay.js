@@ -21,16 +21,14 @@ export default function ForecastDay(props) {
   }
 
   return (
-    <div className="col Forecast">
-      <div className="card">
-        <div className="card-body">
-          <h5 className="card-title">{day()}</h5>
-          <Icons icon={props.data.weather[0].icon} />
-          <p className="card-text">
-            {" "}
-            {maxTemp()} / {minTemp()}°C
-          </p>
-        </div>
+    <div className="card">
+      <div className="card-body">
+        <h5 className="card-title">{day()}</h5>
+        <Icons icon={props.data.weather[0].icon} />
+        <p className="card-text">
+          {" "}
+          {maxTemp()} / {minTemp()}°C
+        </p>
       </div>
     </div>
   );
