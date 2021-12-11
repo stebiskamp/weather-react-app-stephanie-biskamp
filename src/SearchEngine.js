@@ -8,7 +8,6 @@ export default function SearchEngine(props) {
   const [city, setCity] = useState(props.defaultCity);
 
   function handleResponse(response) {
-    console.log(response);
     setWeather({
       ready: true,
       name: response.data.name,
@@ -22,6 +21,18 @@ export default function SearchEngine(props) {
       wind: Math.round(response.data.wind.speed),
       coordinates: response.data.coord,
     });
+  }
+
+  function handleClick() {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  }
+
+  function showPosition(position) {
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude;
+    let apiKey = "53f3bc1f5d348c44be3e3754c7185573";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
   }
 
   function handleSubmit(event) {
@@ -59,7 +70,11 @@ export default function SearchEngine(props) {
           </button>
         </div>
         <div className="col-2">
-          <button type="submit" className="btn btn-dark w-100">
+          <button
+            type="submit"
+            className="btn btn-dark w-100"
+            onClick={handleClick}
+          >
             Current city
           </button>
         </div>
