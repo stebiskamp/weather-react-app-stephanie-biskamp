@@ -2,6 +2,7 @@ import React from "react";
 import FormattedDate from "./FormattedDate";
 import Icons from "./Icons";
 import Temperature from "./Temperature";
+import MaxMinTemp from "./MaxMinTemp";
 
 export default function Weather(props) {
   let d = new Date();
@@ -39,12 +40,11 @@ export default function Weather(props) {
             </div>
           </div>
           <div className="col-12">
-            <h3>
-              Max {props.weather.tempmax}°C{" "}
-              <i className="fas fa-temperature-high"></i> / Min{" "}
-              {props.weather.tempmin}
-              °C <i className="fas fa-temperature-low"></i>
-            </h3>
+            <MaxMinTemp
+              max={props.weather.tempmax}
+              min={props.weather.tempmin}
+              passUnits={props.passUnits}
+            />
           </div>
           <div className="col-12">
             <h3>
