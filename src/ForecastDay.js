@@ -3,13 +3,22 @@ import Icons from "./Icons";
 
 export default function ForecastDay(props) {
   function maxTemp() {
-    let maxTemp = Math.round(props.data.temp.max);
-    return `${maxTemp}`;
+    if (props.passUnits === "celsius") {
+      let temp = Math.round(props.data.temp.max);
+      return `${temp}`;
+    } else {
+      let temp = Math.round((props.data.temp.max * 9) / 5 + 32);
+      return `${temp}`;
+    }
   }
-
   function minTemp() {
-    let minTemp = Math.round(props.data.temp.min);
-    return `${minTemp}`;
+    if (props.passUnits === "celsius") {
+      let temp = Math.round(props.data.temp.min);
+      return `${temp}°C`;
+    } else {
+      let temp = Math.round((props.data.temp.min * 9) / 5 + 32);
+      return `${temp}°F`;
+    }
   }
 
   function day() {
@@ -27,7 +36,7 @@ export default function ForecastDay(props) {
         <Icons icon={props.data.weather[0].icon} />
         <p className="card-text">
           {" "}
-          {maxTemp()} / {minTemp()}°C
+          {maxTemp()} / {minTemp()}
         </p>
       </div>
     </div>

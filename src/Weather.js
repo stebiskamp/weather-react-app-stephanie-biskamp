@@ -27,8 +27,14 @@ export default function Weather(props) {
           <div className="row">
             <div className="col-12">
               <h3>
-                Now is <Temperature celsius={props.weather.temperature} /> -{" "}
-                {props.weather.description} <Icons icon={props.weather.icon} />
+                Now is{" "}
+                <Temperature
+                  celsius={props.weather.temperature}
+                  setPassUnits={props.setPassUnits}
+                  passUnits={props.passUnits}
+                />{" "}
+                - {props.weather.description}{" "}
+                <Icons icon={props.weather.icon} />
               </h3>
             </div>
           </div>

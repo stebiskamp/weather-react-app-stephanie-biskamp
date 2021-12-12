@@ -15,6 +15,15 @@ export default function Forecast(props) {
     setLoaded(true);
   }
 
+  function load() {
+    const apiKey = "53f3bc1f5d348c44be3e3754c7185573";
+    let lat = props.coordinates.lat;
+    let lon = props.coordinates.lon;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+
+    axios.get(apiUrl).then(handleResponse);
+  }
+
   if (loaded) {
     return (
       <div className="row">
@@ -22,7 +31,7 @@ export default function Forecast(props) {
           if (index > 0 && index < 6) {
             return (
               <div className="col Forecast" key={index}>
-                <ForecastDay data={dailyForecast} />
+                <ForecastDay data={dailyForecast} passUnits={props.passUnits} />
               </div>
             );
           } else {
@@ -32,13 +41,7 @@ export default function Forecast(props) {
       </div>
     );
   } else {
-    let latitude = props.coordinates.lat;
-    let longitude = props.coordinates.lon;
-    const apiKey = "53f3bc1f5d348c44be3e3754c7185573";
-    const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
-
-    axios.get(apiUrl).then(handleResponse);
-
+    load();
     return "Loading...";
   }
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import axios from "axios";
 import Weather from "./Weather";
 import Forecast from "./Forecast";
-import axios from "axios";
 
 export default function SearchEngine(props) {
   const [weather, setWeather] = useState({ ready: false });
@@ -50,6 +50,8 @@ export default function SearchEngine(props) {
     setCity(event.target.value);
   }
 
+  const [passUnits, setPassUnits] = useState("celsius");
+
   let form = (
     <form className="SearchEngine" onSubmit={handleSubmit}>
       <div className="row">
@@ -86,13 +88,18 @@ export default function SearchEngine(props) {
     return (
       <div>
         {form}
-        <Weather weather={weather} />
+        <Weather
+          weather={weather}
+          passUnits={passUnits}
+          setPassUnits={setPassUnits}
+        />
         <div className="row">
           <Forecast
             day="Sun"
             tempMax={7}
             tempMin={3}
             coordinates={weather.coordinates}
+            passUnits={passUnits}
           />
         </div>
       </div>
