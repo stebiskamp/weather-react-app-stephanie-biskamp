@@ -1,24 +1,19 @@
 body {
   color: #eaeaea;
 }
+
 h1 {
   padding-left: 98px;
-}
-h3 {
-  padding-left: 20px;
-}
-
-form {
-  padding-left: 49px;
-}
-footer {
-  padding-left: 25px;
 }
 
 h1.header {
   font-size: 60px;
   padding-top: 15px;
   padding-left: 45px;
+}
+
+h3 {
+  padding-left: 20px;
 }
 
 h3.current-day {
@@ -29,8 +24,27 @@ h3.humidity-wind {
   padding-bottom: 30px;
 }
 
+form {
+  padding-left: 49px;
+}
+
 footer {
   color: #252a34;
+  padding-left: 25px;
+}
+
+a.active {
+  color: #eaeaeaa4;
+  text-decoration: none;
+}
+
+a.active:hover {
+  color: #e4f2f0;
+}
+
+a.inactive {
+  color: #e4f2f0;
+  text-decoration: none;
 }
 
 .container {
@@ -54,19 +68,12 @@ footer {
   color: #fc5185;
 }
 
-.description {
-  text-transform: capitalize;
-}
-
 .card {
   border: 7px solid #ff2e63;
 }
+
 .card-body {
   background-color: #eaeaea;
-}
-
-.form-control {
-  border: 5px solid #eaeaea;
 }
 
 .card-text,
@@ -74,8 +81,16 @@ footer {
   color: #ff2e63;
 }
 
+.description {
+  text-transform: capitalize;
+}
+
 .fas {
   color: #08d9d6;
+}
+
+.form-control {
+  border: 5px solid #eaeaea;
 }
 
 .weather-app-wrapper {
@@ -86,18 +101,4 @@ footer {
 
 .WeatherInfo {
   padding-bottom: 35px;
-}
-
-a.active {
-  color: #eaeaeaa4;
-  text-decoration: none;
-}
-
-a.active:hover {
-  color: #e4f2f0;
-}
-
-a.inactive {
-  color: #e4f2f0;
-  text-decoration: none;
 }
