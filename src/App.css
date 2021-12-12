@@ -1,5 +1,7 @@
+body {
+  color: #eaeaea;
+}
 h1 {
-  color: #000;
   padding-left: 98px;
 }
 h3 {
@@ -27,30 +29,53 @@ h3.humidity-wind {
   padding-bottom: 30px;
 }
 
+footer {
+  color: #252a34;
+}
+
 .container {
-  background-color: #eaf6f6;
-  border: 5px solid #f76b8a;
+  background-color: #252a34;
+  border: 10px solid #ff2e63;
   border-radius: 30px;
   margin: 10px 50px 15px 15px;
   padding: 50px 18px 50px 40px;
+}
+
+.btn-light {
+  font-weight: bold;
+  background: #fc5185;
+  border: 4px solid #eaeaea;
+  color: #eaeaea;
+}
+
+.btn-light:hover {
+  background: #eaeaea;
+  border: 4px solid #fc5185;
+  color: #fc5185;
 }
 
 .description {
   text-transform: capitalize;
 }
 
+.card {
+  border: 7px solid #ff2e63;
+}
 .card-body {
-  color: #fcfefe;
-  border: 5px solid #66bfbf;
+  background-color: #eaeaea;
+}
+
+.form-control {
+  border: 5px solid #eaeaea;
 }
 
 .card-text,
 .card-title {
-  color: #f76b8a;
+  color: #ff2e63;
 }
 
 .fas {
-  color: #f76b8a;
+  color: #08d9d6;
 }
 
 .weather-app-wrapper {
@@ -64,11 +89,15 @@ h3.humidity-wind {
 }
 
 a.active {
-  color: rgba(0, 0, 0, 0.404);
+  color: #eaeaeaa4;
   text-decoration: none;
 }
 
+a.active:hover {
+  color: #e4f2f0;
+}
+
 a.inactive {
-  color: #000;
+  color: #e4f2f0;
   text-decoration: none;
 }

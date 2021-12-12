@@ -67,14 +67,14 @@ export default function SearchEngine(props) {
           </div>
         </div>
         <div className="col-2">
-          <button type="submit" className="btn btn-dark search w-100">
+          <button type="submit" className="btn btn-light search w-100">
             Search
           </button>
         </div>
         <div className="col-2">
           <button
             type="submit"
-            className="btn btn-dark w-100"
+            className="btn btn-light w-100"
             onClick={handleClick}
           >
             Current city
